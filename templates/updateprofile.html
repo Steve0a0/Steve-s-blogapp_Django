@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block veri %}
+    {% if user.is_authenticated %}
+        <form id="form" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="updatebigbox">
+                <div class="updatecontent">
+                    <h1>Update Profile</h1>
+                    <br>
+                    <div class="updatefield">
+                        <label>First Name</label> <span></span>
+                        <input type="text" name="fname" value="{{user.first_name}}">
+                    </div>
+                    <div class="updatefield">
+                        <label>Last Name</label> <span></span>
+                        <input type="text" name="lname" value="{{user.last_name}}">
+                    </div>
+                    <div class="input-field">
+                        <label for="author">Username</label>
+                        <input type="text" id="author" name="author" placeholder="Enter the author's name" readonly value="{{user.username}}">
+                    </div>
+                    <div class="input-field">
+                        <label for="image">Image</label>
+                        <input type="file" id="image" name="image" accept="image/profile/*" >
+                    </div>
+                    <div class="updatefield">
+                        <label>Email</label> <span></span>
+                        <input type="email" name="email" value="{{user.email}}">
+                    </div>
+                    <div class="updatefield">
+                        <label>Contact</label> <span></span>
+                        <input type="text" name="Contact" value="{{ user_profile.contact }}">
+                    </div>
+                    <div class="updatechange">
+                        <div class="updatefield">
+                            <label>Website</label> <span></span>
+                            <input type="text" name="website" value="{{ user_profile.website }}">
+                        </div>
+                        <div class="updatefield">
+                            <label>Instagram</label> <span></span>
+                            <input type="text" name="instagram" value="{{ user_profile.instagram }}">
+                        </div>
+                        <div class="updatefield">
+                            <label>Facebook</label> <span></span>
+                            <input type="text" name="facebook"value="{{ user_profile.facebook }}">
+                        </div>
+                        <div class="updatefield">
+                            <label>Twitter X</label> <span></span>
+                            <input type="text" name="twitter" value="{{ user_profile.twitter }}">
+                        </div>
+                        <div class="updatefield">
+                            <label for="content">Bio</label>
+                            <textarea id="content" name="content" placeholder="Enter the content" rows="6" maxlength="1000" required  >{{ user_profile.bio }}</textarea>
+                        </div>
+                        <input type="submit" value="Save">
+                    </div>
+                </div>
+            </div>
+        </form>
+     {% endif %} 
+{% endblock %}

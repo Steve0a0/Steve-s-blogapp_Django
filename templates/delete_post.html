@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block delete %}
+  
+  
+<div class="card text-center shadow-lg p-3 mb-5 bg-body-tertiary card-custom" style="width: 60rem; margin: 30px auto; ">
+    <div class="card-body">
+        <h5 class="card-title">
+            <h4>Delete Post</h4>
+            <br>
+            <br>
+            <h6>{{post.title}}</h6>
+            <hr>
+            <h6>{{post.content}}</h6>
+            <small> Do you really want to Delete this Post?</small>
+            <br>
+            <form action="{% url 'delete' post.pk %}" method="POST">
+                {% csrf_token %}
+                <div class="submit">
+                    <button type="submit" class="btn btn-primary">Delete</button>
+                </div>
+            </form>
+            <h5>
+        </div>
+        </div>
+{% endblock%}

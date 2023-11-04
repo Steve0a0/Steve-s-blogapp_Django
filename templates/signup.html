@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+
+{% block card %}
+
+<div class="center">
+    <h1>Sign Up</h1>
+    <form method = "post">
+        {% csrf_token %}
+        <div class="columns">
+            <div class="column">
+         <div class="txtfield">
+         <label>First Name</label> <span></span>  <input type="text" name = "fname" >
+        </div>
+         <div class="txtfield">
+         <label>Last Name</label> <span></span>  <input type="text" name = "lname" >
+        </div>
+         <div class="txtfield">
+         <label>UserName</label> <span></span>  <input type="text" name = "username" >
+        </div>
+    </div>
+        <div class="column">
+         <div class="txtfield">
+         <label>Email</label> <span></span>  <input type="email" name = "email" >
+        </div>
+         <div class="txtfield">
+         <label>Password</label> <span></span>  <input type="password" name = "pass1" >
+        </div>
+         <div class="txtfield">
+         <label>Confirm Password</label> <span></span>  <input type="password" name = "pass2" >
+        </div>
+    </div>
+</div>
+        <input type="submit" value = "Sign Up">
+        
+        <div class="login1">
+
+            <h4>Already Have an Account?</h4>
+            <br>
+             <a href="{% url 'login' %}">Login
+        
+    </form>
+    
+</div>
+{% endblock %}

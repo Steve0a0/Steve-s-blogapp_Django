@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block veri %}
+    {% if user.is_authenticated %}
+    <div class="bigbox">
+        <div class="imgline">
+    <div class="imgpic">
+        
+        {% if user_profile.profile_image %}
+        <img src="{{ user_profile.profile_image.url }}" alt="" class="profile_img">
+        {% else %}
+        <img src="{% static "img/60111.jpg" %}" alt="" class="profile_img">
+    {% endif %}
+ 
+    </div>
+</div>
+<div class="profileinfo">
+<div class="profile-content">
+<h2>{{ user.get_full_name }}</h2>
+<br>
+<h5>{{ user.username }}</h5>
+<br>
+<div class="contact-info">
+    <h6 class="em">Email: {{user.email }}</h6>
+    <h6 class="con">Contact Number: {{user_profile.contact }}</h6>
+</div>
+<div class="website ">
+    <a href="{{user_profile.website }}" class="btn-website">Visit Website</a>
+</div>
+<hr> 
+</div>
+</div>
+
+<div class="conthold">
+<div class="bio ">
+<h2>Bio</h2>
+</div>
+<div class="biocont ">
+<p> {{user_profile.bio }}</p>
+</div>
+<div class="social-mediaa ">
+<a href="{{user_profile.instagram }}"><i class="fab fa-instagram"></i></a>
+<a href="{{user_profile.twitter }}"><i class="fab fa-twitter"></i></a>
+<a href="{{user_profile.facebook }}"><i class="fab fa-facebook"></i></a>
+</div>
+<div class="updateprofile">
+<a href="{% url "updateprofile" %}">Update Profile</a>
+</div> 
+</div>
+
+
+    {% endif %}
+    {% endblock %}

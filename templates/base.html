@@ -1,0 +1,57 @@
+
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="{% static 'index.js' %}"></script>
+</head>
+<body>
+
+    <header class="header">
+        <div class="logo-container">
+            <a href="{% url 'home' %}" class = "logo">ECHO</a>
+        </div>
+        <input type="checkbox" id="check">
+        <label for="check" class="icons">
+            <i class='bx bx-menu'id="menu-icon"></i>
+            <i class='bx bx-x' id="close-icon"></i>
+        </label>
+        <nav class="navbar">
+            <a href="{% url 'addpost'%}">New Post</a>
+            <a href="{% url 'profile' %}">Profile</a>
+            {% if user.is_authenticated %}
+                    {% csrf_token %}
+                    <a href="{% url 'logout' %}">Logout</a>
+                    {% else %}
+                    <a href="{% url 'login' %}">Login</a>
+                    {% endif %}
+
+        </nav>
+    </header>
+    <div class="cards">
+        {% block card %}
+        {% endblock %}
+    </div>
+
+    <div class="postcards">
+        {% block postcard %}
+        {% endblock%}
+    </div>
+    
+    <div class="veris">
+        {% block veri %}
+        {% endblock%}
+    </div>
+
+    
+    
+  
+</body>
+</html>

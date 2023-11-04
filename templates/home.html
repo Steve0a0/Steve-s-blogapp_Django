@@ -1,0 +1,98 @@
+
+{% extends 'base.html' %}
+
+{% block title %}
+{% load static %}
+Home page
+{% endblock %}
+
+{% block card %}
+ <div class="whole">
+  <div class="heading">
+    <h1><Strong>Welcome {{user.first_name}}</Strong></h1>
+  </div>
+  <div class="btn1">
+    <a href="{% url 'addpost' %}">New Post</a>
+  </div>
+</div>  
+
+
+<div class="content">
+  <div class="head">
+    <h1>Recent Posts</h1>
+  </div>
+  <div class="container-search">
+    <div class="search-bar">
+      <form method="get" action="{% url 'home' %}">
+        <input type="search" placeholder="Search..." name="q" >
+        <button type="submit"><img src="{% static "img/magnifying-glass.png" %}" alt=""></button>
+      </form></div>
+      </div>
+      <div class="categories">
+        <ul class = "list">
+          <li><a href="{% url 'home' %}">All</a></li>
+            <li><a href="?category=Technology">Technology</a></li>
+            <li><a href="?category=Education">Education</a></li>
+            <li><a href="?category=Lifestyle">Lifestyle</a></li>
+            <li><a href="?category=Business">Business</a></li>
+            <li><a href="?category=Science">Science</a></li>
+            <li><a href="?category=Technology">Personal Development</a></li>
+            <li><a href="?category=Technology">Arts and Culture</a></li>
+            <li><a href="?category=Technology">Environment and Sustainability</a></li>
+            <li><a href="?category=Technology">Parenting and Family</a></li>
+            <li><a href="?category=Technology">Sports and Fitness</a></li>
+        </ul>
+    </div>
+  <div class="box-containers">
+  <div class="boxes">
+    {% for post in posts %}
+    <div class="containers" >
+    <div class="boximg">
+      {% if post.image %}
+      <img src="{{ post.image.url }}" alt="{{ post.title }}">
+  {% endif %}
+  </div>
+  <div class="boxtext">
+    <h2 class="posttitle"><a href="{% url 'article' post.pk %}">{{ post.title }}</a></h2>
+  
+    <p>{{ post.content | slice:":200"|safe }}</p>
+    <div class="readmore">
+      <a href="{% url 'article' post.pk %}">Read More</a>
+    </div>
+  </div>
+  </div>
+  {% endfor %}
+</div>
+</div>
+</div>
+
+<footer id="footer">
+  <div class="container">
+      <div class="footer-top">
+          <h1 class="footer-logo">ECHO</h1>
+          <div class="social-media">
+              <a href="#"><i class="fab fa-facebook"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+          </div>
+      </div>
+      <div class="footer-mid">
+          <ul class="footer-nav">
+              <li><a href="#">Home</a></li>
+              <li><a href="#">About</a></li>
+              <li><a href="#">Contact</a></li>
+          </ul>
+      </div>
+      <div class="footer-bottom">
+          <p>&copy; 2023 Loggo. All rights reserved.</p>
+      </div>
+  </div>
+</footer>
+{% endblock%}  
+
+
+  
+  
+  
+  
+  

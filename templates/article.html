@@ -1,0 +1,90 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block card %}
+<div class="cards">
+    <div class="container1">
+        <div class="hero">
+            <img src={{posts.image.url}} alt="{{ posts.title }}">
+        </div>
+        <main>
+            <h2 class="headd">{{posts.title}}</h2>
+            <h3 class="categories">{{posts.categories}}</h3>
+            <br>
+            <br>
+            
+            <div class="profile-container">
+
+                <div class="profileimage">
+                    {% if posts.author.profilepage.profile_image %}
+                        <img src="{{ posts.author.profilepage.profile_image.url }}" alt="{{ posts.author.username }}" class="profile_imgg">
+                    {% else %}
+                        <img src="{% static 'img/60111.jpg' %}" alt="Default Profile Image" class="profile_imgg">
+                    {% endif %}
+    
+                </div>
+                <div class="profile">
+              
+                    <div class="text">
+                        <h3>{{posts.author}}</h3>
+                        <span class="date">
+                        <p>{{posts.publication_time}}</p>
+                    </span>
+
+                    </div>
+                </div>
+                {% if user.is_authenticated %}
+                {% if user.id == posts.author.id %}
+                <div class="button">
+                    <a href="{% url 'update' posts.pk %}"class = "btn">Edit</a>
+                    <button onclick="document.querySelector('.delete_cont').style.display='block'" id="redbtn" class="btn">Delete</button>                </div>
+                    <div class="delete_cont">
+                        <span onclick="document.querySelector('.delete_cont').style.display='none'" class="close" title="close">&times;</span>
+                        <div class="delete_txt">
+                            <p>Are you sure you want to delete this post</p>
+                        </div>
+                        <div class="delete_actions">
+                    <button onclick="document.querySelector('.delete_cont').style.display='none'" class="cancel">Cancel</button>
+                    <form action="{% url 'delete' posts.pk %}" method="POST">
+                        {% csrf_token %}
+                        <div class="submit">
+                        <button type="submit" class="delete">Delete</button>
+                        </div>
+                    </form>
+                        </div>
+                    </div>
+{% endif %}
+{% endif %}
+            </div>
+            
+            <div class="content1 scrollable">
+                <p>{{posts.content | safe }}</p>
+            </div>
+        </main>
+    </div>
+</div>
+
+<footer id="footerr">
+    <div class="container">
+        <div class="footer-top">
+            <h1 class="footer-logo">ECHO</h1>
+            <div class="social-media">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+        <div class="footer-mid">
+            <ul class="footer-nav">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 Loggo. All rights reserved.</p>
+        </div>
+    </div>
+  </footer>
+
+    {% endblock %}

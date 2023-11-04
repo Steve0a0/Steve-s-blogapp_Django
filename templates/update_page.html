@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+{% block postcard %}
+{% if user.is_authenticated %}
+{% if user.id == posts.author.id %}
+
+<div class="center2">
+    <h1>Update Post</h1>
+    
+    <form id="form" method="POST" enctype="multipart/form-data">
+  
+      {% csrf_token %}
+  
+      <div class="input-field">
+        <label for="title">Title</label>
+        <input type="text" id="title" name="title" value="{{ posts.title }}" required>
+      </div>
+  
+      
+      
+      <div class="input-field scrollable-content">
+         <label for="content">Content</label>
+         <textarea id="editor" class="ckeditor" name="editor">{{ posts.content }}</textarea>
+      </div>
+  
+      <div class="input-field">
+        <label for="author">Author</label>
+        <input type="text" id="author" name="author" value="{{ posts.author.username }}" required>
+      </div>
+  
+      <div class="input-field">
+         <label for="date">Publication Time</label>
+         <input type="datetime-local" id="date" name="date" value="{{ posts.publication_time|date:'Y-m-d\TH:i' }}" required>
+      </div>
+  
+      <div class="input-field">
+        <label for="categories">Categories</label>
+        <select id="categories" name="categories" multiple required>
+           <option value="Technology" {% if 'Technology' in posts.categories %}selected{% endif %}>Technology</option>
+           <option value="Education" {% if 'Education' in posts.categories %}selected{% endif %}>Education</option>
+           <option value="Lifestyle" {% if 'Lifestyle' in posts.categories %}selected{% endif %}>Lifestyle</option> 
+           <option value="Business" {% if 'Business' in posts.categories %}selected{% endif %}>Business</option> 
+           <option value="Science" {% if 'Science' in posts.categories %}selected{% endif %}>Science</option> 
+           <option value="PersonalDevelopment" {% if 'PersonalDevelopment' in posts.categories %}selected{% endif %}>Personal Development</option> 
+           <option value="ArtsandCulture" {% if 'ArtsandCulture' in posts.categories %}selected{% endif %}>Arts and Culture</option> 
+           <option value="EnviromentandSustainability" {% if 'EnviromentandSustainability' in posts.categories %}selected{% endif %}>Enviroment and Sustainability</option> 
+           <option value="ParentingandFamily" {% if 'ParentingandFamily' in posts.categories %}selected{% endif %}>Parenting and Family</option> 
+           <option value="SportsandFitness" {% if 'SportsandFitness' in posts.categories %}selected{% endif %}>Sports and Fitness</option> 
+         </select>
+      </div>
+  
+      <div class="input-field">
+        <label for="image">Image</label>
+        <input type="file" id="image" name="image" accept="image/*">
+      </div>
+  
+      <div class="btn-container">
+        <button class="btn" type="submit">Update Post</button>
+      </div>
+    
+    </form>
+  
+  </div>
+
+  <script src="https://cdn.ckeditor.com/ckeditor5/45.0.0/classic/ckeditor.js"></script>
+
+  <script>
+    ClassicEditor
+      .create(document.querySelector('#editor'))
+      .catch(error => {
+          console.error(error);
+      });
+
+    const form = document.getElementById('form');
+    const editor = ClassicEditor.instances.editor;
+
+    form.addEventListener('submit', () => {
+      const data = editor.getData();
+      document.getElementById('content').value = data;
+    });
+
+  </script>
+{% else %}
+You are not allowed here.
+{% endif %}
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block card%}
+
+<div class="center">
+    <h1>Login</h1>
+    <form method = "POST" action = "{% url 'login' %}">
+        {% csrf_token %}
+        <div class="txtfield">
+         <label>Username</label> <span></span>  <input type="text" name = "username">
+         </div>
+         <div class="txtfield">
+         <label>Password</label> <span></span>  <input type="password" name = "pass1" >
+        </div>
+        <input type="submit" value = "Login">
+        <div class="signup">
+            Not a Member? <a href="{% url 'signup' %}">Create Account</a>
+        
+    </div>
+    </form>
+   </div>
+
+   {% endblock %}
