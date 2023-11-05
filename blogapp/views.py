@@ -8,7 +8,7 @@ from django.contrib import messages
 from .models import profilepage
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
-from django.views.decorators.csrf import csrf_protect
+from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
 
 def homepage(request):
@@ -36,7 +36,7 @@ def articlepage(request,pk):
     post=get_object_or_404(NewPost, pk=pk)
     return render (request, "article.html", {'posts': post, 'user': request.user})
 
-@csrf_protect
+@csrf_exempt
 def addpost(request):
     if request.method =="POST":
         title=request.POST['title']
@@ -53,7 +53,7 @@ def addpost(request):
         
     return render(request, "addpost.html")
 
-@csrf_protect
+@csrf_exempt
 def loginpage(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -68,7 +68,7 @@ def loginpage(request):
     
     return render(request, "login.html")
 
-@csrf_protect
+@csrf_exempt
 def signup(request):
     if request.method == 'POST':
         username = request.POST['username']
@@ -91,12 +91,12 @@ def signup(request):
     
     return render(request, "signup.html")
 
-@csrf_protect
+@csrf_exempt
 def logoutpage(request):       
     logout(request)
     return redirect('home')
 
-@csrf_protect
+@csrf_exempt
 def updatepost(request, pk):
     post = get_object_or_404(NewPost, pk=pk)
     
@@ -124,7 +124,7 @@ def deletepost(request,pk):
         
     return render (request,"delete_post.html" ,{'post': post})
 
-@csrf_protect
+@csrf_exempt
 def updateprofilepage(request):
     user_profile,created= profilepage.objects.get_or_create(user=request.user)
     
