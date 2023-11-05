@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '1qsh*nt#m$yhh%xcyh73*j&#k-(kw22+)*#jni6)&a09g^(ag6'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['https://steve-s-blogappdjango-production.up.railway.app/']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
