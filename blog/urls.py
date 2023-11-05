@@ -31,4 +31,7 @@ urlpatterns = [
     path('logout/',views.logoutpage, name= 'logout'),
     path('updateprofile/',views.updateprofilepage, name= 'updateprofile'),
     path('profile/',views.profilepagee, name= 'profile'),
-]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] 
+
+if settings.DEBUG: 
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
