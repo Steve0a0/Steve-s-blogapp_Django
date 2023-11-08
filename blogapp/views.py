@@ -9,6 +9,7 @@ from .models import profilepage
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
+from django.core.files.storage import default_storage
 # Create your views here.
 
 def homepage(request):
@@ -44,10 +45,12 @@ def addpost(request):
         author=request.POST['author']
         date=request.POST['date']
         categories=request.POST['categories']
-        upload=request.FILES.get('image',None)
-    
+        upload=request.FILES.get('image')
+        if upload:
+            path = default_storage.save(upload.name,upload)
+            image_path =path
         author=request.user
-        newpost=NewPost(title=title, content=content,author=author,publication_time=date,categories=categories,image=upload)
+        newpost=NewPost(title=title, content=content,author=author,publication_time=date,categories=categories,image=image_path)
         newpost.save()
         return redirect('home')
         
