@@ -25,7 +25,7 @@ SECRET_KEY = '1qsh*nt#m$yhh%xcyh73*j&#k-(kw22+)*#jni6)&a09g^(ag6'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['steve-s-blogappdjango-production.up.railway.app']
+ALLOWED_HOSTS = ['*']
 
 CSRF_COOKIE_DOMAIN = 'steve-s-blogappdjango-production.up.railway.app'
 
