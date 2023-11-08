@@ -80,10 +80,11 @@ WSGI_APPLICATION = 'blog.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'blogsite',
+        'NAME': 'railway',
         'USER': 'postgres',
-        'PASSWORD': 'admin',
-        'PORT': '5432'
+        'PASSWORD': 'ffgcbfGfb51Fb-*eD436-DB-BCBEaeD4',
+        'HOST' : 'viaduct.proxy.rlwy.net',
+        'PORT': '56721'
     }
 }
 
