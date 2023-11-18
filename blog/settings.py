@@ -108,6 +108,13 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+AWS_ACCESS_KEY_ID = 'AKIA46NI5ZVIDKGE6LOP'
+AWS_SECRET_ACCESS_KEY = '/wc5E1A15CLwgJ8z4cN2JxcKHqhEjHMRRrPMSPWG'
+AWS_STORAGE_BUCKET_NAME = 'blogwebsites3'
+AWS_S3_REGION_NAME = 'us-east-1'  # Optional: specify your bucket region
+
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
 
@@ -126,13 +133,13 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
-# MEDIA_URL = '/media/'
+MEDIA_URL = '/media/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
 
-# MEDIA_ROOT = '/home/app/media'
+MEDIA_ROOT = '/home/app/media'
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 
