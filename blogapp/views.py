@@ -117,7 +117,7 @@ def updatepost(request, pk):
         return redirect('home')
 
     return render(request, 'update_page.html', {'user': request.user, 'posts': post})
-
+@csrf_exempt
 def deletepost(request,pk):
     post=NewPost.objects.get(pk=pk)
     if request.method=="POST":
