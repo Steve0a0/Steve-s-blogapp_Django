@@ -1512,7 +1512,9 @@ background-color: #0056b3;
         display: flex;
         align-items: center; 
         justify-content: space-between;
-        padding: 30px;
+        padding-top: 30px;
+padding-bottom: 30px;
+padding-left: 30px;
       }
       
       .logo-container {
@@ -1530,6 +1532,13 @@ background-color: #0056b3;
 @media (max-width:786px){
     .head h1{
         padding-left: 70px ;
+    }
+    .boxtext h2{
+        font-size: 8px;
+    }
+    #footer{
+        height: 13.5%;
+        width: 100%;
     }
     body{
         height: 100vh;
@@ -1578,7 +1587,7 @@ background-color: #0056b3;
       }
       .icons{
         display: inline-flex;
-        padding-left: 65%;
+        padding-left: 45%;
       }
       .icons #close-icon{
         display: none;
@@ -1605,7 +1614,7 @@ background-color: #0056b3;
 @media (max-width:480px){
     
     .containers {
-        width: 50%;
+        width: 90%;
     }
     .search-bar {
         width: 400%;
@@ -2036,7 +2045,7 @@ background-color: #0056b3;
         display: flex;
     }
     .containers {
-        width: 50%;
+        width: 90%;
     }
     .search-bar {
         width: 90%;
