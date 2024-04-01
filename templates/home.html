@@ -7,86 +7,101 @@ Home page
 {% endblock %}
 
 {% block card %}
- <div class="whole">
-  <div class="heading">
-    <h1><Strong>Welcome {{user.first_name}}</Strong></h1>
-  </div>
-  <div class="btn1">
-    <a href="{% url 'addpost' %}">New Post</a>
-  </div>
-</div>  
-
-
-<div class="content">
-  <div class="head">
-    <h1>Recent Posts</h1>
-  </div>
-  <div class="container-search">
-    <div class="search-bar">
-      <form method="get" action="{% url 'home' %}">
-        <input type="search" placeholder="Search..." name="q" >
-        <button type="submit"><img src="{% static "img/magnifying-glass.png" %}" alt=""></button>
-      </form></div>
+<section class="searchsec">
+  <div class="search">
+      <form  class ='searchh'method="get" action="{% url 'home' %}">
+          <input type="search" placeholder="Search"  name="q" class ='searchinput'>
+          <i class="fa fa-search"></i>
+          <a href="javascript:void(0)" id="clear-btn">Clear</a>
+        </form>  
       </div>
-      <div class="categories">
-        <ul class = "list">
-          <li><a href="{% url 'home' %}">All</a></li>
-            <li><a href="?category=Technology">Technology</a></li>
-            <li><a href="?category=Education">Education</a></li>
-            <li><a href="?category=Lifestyle">Lifestyle</a></li>
-            <li><a href="?category=Business">Business</a></li>
-            <li><a href="?category=Science">Science</a></li>
-            <li><a href="?category=Technology">Personal Development</a></li>
-            <li><a href="?category=Technology">Arts and Culture</a></li>
-            <li><a href="?category=Technology">Environment and Sustainability</a></li>
-            <li><a href="?category=Technology">Parenting and Family</a></li>
-            <li><a href="?category=Technology">Sports and Fitness</a></li>
-        </ul>
-    </div>
-  <div class="box-containers">
-  <div class="boxes">
-    {% for post in posts %}
-    <div class="containers" >
-    <div class="boximg">
-      {% if post.image %}
-      <img src="{{ post.image.url}}" alt="{{ post.title }}">
-  {% endif %}
-  </div>
-  <div class="boxtext">
-    <h2 class="posttitle"><a href="{% url 'article' post.pk %}">{{ post.title }}</a></h2>
+</section>
+
+<section class="categories">
+  <ul class="navbar-nav custom-ul">
+      <li class="nav-item">
+          <a class="nav-link mx-2 text-uppercase" href="{% url 'home' %}">All</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link mx-2 text-uppercase" href="?category=Technology">Technology</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link mx-2 text-uppercase" href="?category=Education">Education</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link mx-2 text-uppercase" href="?category=Lifestyle">Lifestyle</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link mx-2 text-uppercase" href="?category=Business">Business</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link mx-2 text-uppercase" href="?category=Science">Science</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link mx-2 text-uppercase" href="?category=Personal Development">Personal Development</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link mx-2 text-uppercase" href="?category=Arts and Culture">Arts and Culture</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link mx-2 text-uppercase" href="?category=Environment and Sustainability">Environment and Sustainability</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link mx-2 text-uppercase" href="?category=Parenting and Family">Parenting and Family</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link mx-2 text-uppercase" href="?category=Sports and Fitness">Sports and Fitness</a>
+      </li>
+  </ul>
   
-    <p>{{ post.content | slice:":200"|safe }}</p>
-    <div class="readmore">
-      <a href="{% url 'article' post.pk %}">Read More</a>
-    </div>
-  </div>
-  </div>
-  {% endfor %}
+</section>
+<div class="line"></div>
+<div class="post"><h1>BLOGS</h1></div>
+<div class="container">
+  <div class="row">
+{% for post in posts %}
+<div class="col-md-4">
+<div class="bigcard">
+ 
+<div class="card">
+  {% if post.image %}
+  <img src="{{ post.image.url}}" class="card-img" alt="{{ post.title }}">
+  {% endif %}
+<div class="card-body">
+  <h1 class="card-title"><a href="{% url 'article' post.pk %}">{{ post.title }}</a> </h1>
+  <p class="card-info">{{ post.content | slice:":200"|safe }}    </p>
+  <a href="{% url 'article' post.pk %}" class="card-btn">Learn More</a>
 </div>
+</div>
+</div>
+</div>
+{% endfor %}
 </div>
 </div>
 
-<footer id="footer">
-  <div class="container">
-      <div class="footer-top">
-          <h1 class="footer-logo">ECHO</h1>
-          <div class="social-media">
-              <a href="https://www.facebook.com/stephen.angelo.581/"><i class="fab fa-facebook"></i></a>
-              <a href="https://www.instagram.com/stephennangelo/"><i class="fab fa-instagram"></i></a>
-              <a href="https://twitter.com/StephenAng67731"><i class="fab fa-twitter"></i></a>
-          </div>
-      </div>
-      <div class="footer-mid">
-          <ul class="footer-nav">
-            <a href="{% url 'addpost'%}">New Post</a>
-            <a href="{% url 'profile' %}">Profile</a>
-          </ul>
-      </div>
-      <div class="footer-bottom">
-          <p>&copy; 2023 Stephen Angelo Kumar. All rights reserved.</p>
-      </div>
-  </div>
+<footer>
+    <div class="footer">
+        <div class="footer-links">
+            <ul>
+                <li><a href="{% url 'addpost'%}">Add Post </a></li>
+                <li><a href="{% url 'signup'%}">Sign Up </a></li>
+                <li><a href="{% url 'login'%}">Login </a></li>
+               
+                
+            </ul>
+        </div>
+        <div class="social-links">
+            <a href="https://www.facebook.com/stephen.angelo.581/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com/StephenAng67731" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.instagram.com/stephennangelo/" target="_blank"><i class="fab fa-instagram"></i></a>
+        </div>
+   
+        <p class="copyright">&copy; 2024 ECHO Blog </p>
+    </div>
 </footer>
+  
+
+
 {% endblock%}  
 
 
