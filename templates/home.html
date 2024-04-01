@@ -8,13 +8,13 @@ Home page
 
 {% block card %}
 <section class="searchsec">
-  <div class="search">
-      <form  class ='searchh'method="get" action="{% url 'home' %}">
-          <input type="search" placeholder="Search"  name="q" class ='searchinput'>
-          <i class="fa fa-search"></i>
-          <a href="javascript:void(0)" id="clear-btn">Clear</a>
-        </form>  
-      </div>
+    <div class="search">
+        <form method="get"  class ='searchh' action="{% url 'home' %}">
+            <input type="search" placeholder="Search"  name="q">
+            <i class="fa fa-search"></i>
+            <a href="javascript:void(0)" id="clear-btn">Clear</a>
+          </form>  
+        </div>
 </section>
 
 <section class="categories">

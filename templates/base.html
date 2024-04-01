@@ -29,7 +29,7 @@
     color:blue
   } 
   
-  .searchh{
+  {% comment %} .searchh{
     position: relative;
     top: 50%;
     left: 50%;
@@ -57,7 +57,7 @@
     font-size: 1em;
     border-radius: 20px;
     padding: 0 20px;
-} 
+}  {% endcomment %}
  
 .fa{
     box-sizing: border-box;
@@ -74,8 +74,9 @@
     transition: all 1s;
 }
 
-form:hover{
-    
+form:hover,
+form:valid{
+    width: 200px;
     cursor: pointer;
 }
 
