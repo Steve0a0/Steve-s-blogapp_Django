@@ -1541,16 +1541,7 @@ background-color: #0056b3;
 .center2{
     max-width: 300px;
 }
-body{
-    height: 200vh;
-    background-color: white;
-    background-image: url('https://images.unsplash.com/photo-1635776063043-ab23b4c226f6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2832&q=80');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-attachment: fixed;
-    background-size: cover;
-    width: 100%;
-}
+
 .bigbox{
     width: 85%;
     left: 6%;

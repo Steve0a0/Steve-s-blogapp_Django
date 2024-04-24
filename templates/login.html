@@ -15,11 +15,37 @@
         <input type="submit" value = "Login">
         <div class="signup">
             Not a Member? <a href="{% url 'signup' %}">Create Account</a>
-        
     </div>
     </form>
     
    </div>
+
+{% comment %} 
+   <div class="main">
+    <div class="login-box">
+        <div class="login-header">
+            <header>Login</header>
+        </div>
+        <form method = "POST" action = "{% url 'login' %}">
+            {% csrf_token %}
+        <div class="input-box">
+            <input type="text" name = "username" class="input-field" placeholder="Email" autocomplete="off" required>
+        </div>
+        <div class="input-box">
+            <input type="password" name = "pass1"class="input-field" placeholder="Password" autocomplete="off" required>
+        </div>
+        
+        <div class="input-submit">
+            <button class="submit-btn" id="submit"></button>
+            <label for="submit">Sign In</label>
+        </div>
+        <div class="sign-up-link">
+            <p>Don't have account? <a href="{% url 'signup' %}">Sign Up</a></p>
+        </div>
+    </form>
+    </div>
+</div>
+    {% endcomment %}
    
    
   

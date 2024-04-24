@@ -301,72 +301,7 @@
     display: flex;
     justify-content: space-between; 
   }
-.center h1{
-    text-align: center;
-    padding-bottom: 20px;
-    border-bottom: 1px solid black;
-    padding-top: 20px;
-}
 
-.center form{
-    padding: 20px;
-    box-sizing: border-box;
-}
-
-.center form .txtfield{
-    position:relative;
-    border-bottom: 2px solid grey;
-    margin: 3cqi 0;
-
-}
-
- 
-
-.txtfield input{
-    width: 100%;
-    padding: 0 5px;
-    height: 50px;
-    font-size: 16px;
-    border: none;
-    background: none;
-    outline: none;
-}
-.txtfield label{
-    position: absolute;
-    top: -10px;
-    left: 5px;
-    color: #28282B;
-    transform: translateY(10%);
-    font-size: 16px;
-    pointer-events: none;
-}
-
-.center input[type = "submit"]{
-    width: 100%;
-    height: 40px;
-    border: 1px solid;
-    background-color: #28282B;
-    border-radius: 10px;
-    color: white;
-}
-input[type = "submit"]:hover{
-    background-color: white;
-    color: #28282B;
-}
-
-.signup{
-    padding: 30px;
-    text-align: center;
-}
-.login1 input[type = "submit"]{
-    width: 40%;;
-    height: 40px;
-    display: flex;
-    justify-content: center;
-}
-div.login1{
-    padding: 20px;
-}
 
 
 
